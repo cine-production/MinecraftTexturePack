@@ -1,4 +1,5 @@
 name: Update Texture Pack
+
 on:
   push:
     branches:
@@ -7,27 +8,30 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Zip texture pack
-        run: zip -r "Wonder Ressource Pack.zip" .
+        run: zip -r "Wonder_Ressource_Pack.zip" .
         working-directory: Wonder Ressource Pack
+
+      - name: Move ZIP to repo root
+        run: mv "Wonder Ressource Pack/Wonder_Ressource_Pack.zip" .
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: texture-pack
-          path: Wonder Ressource Pack/Wonder Ressource Pack.zip
+          path: Wonder_Ressource_Pack.zip
 
       - name: Commit and push zip
         run: |
-          mv Wonder\ Ressource\ Pack/Wonder\ Ressource\ Pack.zip ./
           git config user.name "GitHub Action"
           git config user.email "action@github.com"
-          git add "Wonder Ressource Pack.zip"
-          git commit -m "Update Wonder Ressource Pack.zip" || echo "No changes to commit"
+          git add "Wonder_Ressource_Pack.zip"
+          git commit -m "Update Wonder_Ressource_Pack.zip" || echo "No changes to commit"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
