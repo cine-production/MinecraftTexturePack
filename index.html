@@ -24,6 +24,9 @@
     </div>
 
     <script>
+        
+        firebase.initializeApp(firebaseConfig);
+        import { initializeApp } from "firebase/app";
         // Initialiser Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyDnnm7f-X8HOJUTKr91X9WStCzKV1K86Bw",
@@ -33,7 +36,7 @@
             messagingSenderId: "720444464377",
             appId: "1:720444464377:web:934fb35be7b1a1231ad628"
         };
-        firebase.initializeApp(firebaseConfig);
+        const app = initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db = firebase.firestore();
 
@@ -144,4 +147,5 @@
         }
     </script>
 </body>
+
 </html>
