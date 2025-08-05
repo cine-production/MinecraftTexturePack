@@ -10,19 +10,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Zip texture pack
-        run: zip -r "Wonder Ressource Pack.zip" .
+        run: zip -r "../Wonder Ressource Pack.zip" .
         working-directory: Wonder Ressource Pack
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: texture-pack
-          path: "Wonder Ressource Pack.zip"
+          path: "../Wonder Ressource Pack.zip"
       - name: Commit and push zip
         run: |
           git config user.name "GitHub Action"
           git config user.email "action@github.com"
-          git add "Wonder Ressource Pack.zip"
-          git commit -m "Update Wonder Ressource Pack.zip"
+          git add "../Wonder Ressource Pack.zip"
+          git commit -m "Update Wonder Ressource Pack.zip" || echo "No changes to commit"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
